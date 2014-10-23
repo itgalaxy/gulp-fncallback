@@ -96,14 +96,6 @@ describe('gulp-callback', function() {
 
         var myCallback = callback('string');
 
-        /*assert.throws(function () {
-            myCallback.write(fakeFile);
-        }, function (error) {
-            if ((error instanceof Object) && /gulp-callback/.test(error.plugin) && /Callback is not function/.test(error.message)) {
-                return true;
-
-            }
-        });*/
         var fn = function () {
             myCallback.write(fakeFile);
         };
