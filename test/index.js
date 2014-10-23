@@ -1,0 +1,215 @@
+/*global describe:false, it:false */
+var callback = require('./../index');
+
+var should = require('should');
+var File = require('vinyl');
+var es = require('event-stream');
+var gutil = require('gulp-util');
+
+var objectEquals = function(x, y) {
+    if (x instanceof Function) {
+        if (y instanceof Function) {
+            return x.toString() === y.toString();
+        }
+        return false;
+    }
+    if (x === null || x === undefined || y === null || y === undefined) {
+        return x === y;
+    }
+    if (x === y || x.valueOf() === y.valueOf()) {
+        return true;
+    }
+
+    // if one of them is date, they must had equal valueOf
+    if (x instanceof Date) {
+        return false;
+    }
+    if (y instanceof Date) {
+        return false;
+    }
+
+    // if they are not function or strictly equal, they both need to be Objects
+    if (!(x instanceof Object)) {
+        return false;
+    }
+    if (!(y instanceof Object)) {
+        return false;
+    }
+
+    var p = Object.keys(x);
+    return Object.keys(y).every(function (i) {
+        return p.indexOf(i) !== -1;
+    }) ?
+        p.every(function (i) {
+            return objectEquals(x[i], y[i]);
+        }) : false;
+};
+
+describe('gulp-callback', function() {
+    it('should works', function(done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var myCallback = callback(function (file, enc, cb) {
+            cb();
+        });
+
+        myCallback.write(fakeFile);
+
+        myCallback.once('data', function(file) {
+            file.isStream().should.be.true;
+
+            file.contents.pipe(
+                es.wait(function(err, data) {
+                    data.should.equal('streamwiththosecontents');
+                    done();
+                })
+            );
+        });
+
+        myCallback.end();
+    });
+
+    //is first argument function
+    it('is first argument should function', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var myCallback = callback(function (file, enc, cb) {
+            cb();
+        });
+
+        (function () {
+            myCallback.write(fakeFile);
+        }).should.not.throw();
+
+        done();
+    });
+
+    // Test exception
+    it('is first argument should not function', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var myCallback = callback('string');
+
+        /*assert.throws(function () {
+            myCallback.write(fakeFile);
+        }, function (error) {
+            if ((error instanceof Object) && /gulp-callback/.test(error.plugin) && /Callback is not function/.test(error.message)) {
+                return true;
+
+            }
+        });*/
+        var fn = function () {
+            myCallback.write(fakeFile);
+        };
+
+        fn.should.throw('Callback is not function');
+
+        done();
+    });
+
+    // is set once true
+    it('is option once set true', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var fakeFileNext = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var count = 2;
+        var myCallback = callback(function (file, enc, cb) {
+            count--;
+            cb();
+        }, {
+            once: true
+        });
+
+        myCallback.write(fakeFile);
+
+        myCallback.write(fakeFileNext);
+
+        count.should.equal(1);
+
+        done();
+    });
+
+    // is set once false
+    it('is option once set false', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var fakeFileNext = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var count = 2;
+        var myCallback = callback(function (file, enc, cb) {
+            count--;
+            cb();
+        }, {
+            once: false
+        });
+
+        myCallback.write(fakeFile);
+
+        myCallback.write(fakeFileNext);
+
+        count.should.equal(0);
+
+        done();
+    });
+
+    // is arguments callback working
+    it('is first argument callback should File', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var myCallback = callback(function (file, enc, cb) {
+            file.should.be.an.instanceof(File);
+            cb();
+        });
+
+        myCallback.write(fakeFile);
+
+        done();
+    });
+
+    it('is second argument callback should string', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var myCallback = callback(function (file, enc, cb) {
+            enc.should.be.type('string');
+            cb();
+        });
+
+        myCallback.write(fakeFile);
+
+        done();
+    });
+
+    it('is second argument callback should function', function (done) {
+        var fakeFile = new File({
+            contents: es.readArray(['stream', 'with', 'those', 'contents'])
+        });
+
+        var myCallback = callback(function (file, enc, cb) {
+            cb.should.be.an.Function;
+            cb();
+        });
+
+        myCallback.write(fakeFile);
+
+        done();
+    });
+});

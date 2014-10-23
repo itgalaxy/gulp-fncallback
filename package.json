@@ -29,6 +29,9 @@
         "lodash.defaults": "~2.4.1"
     },
     "devDependencies": {
-        "mocha": "*"
+        "mocha": "*",
+        "should": "*",
+        "vinyl": "*",
+        "event-stream": "*"
     }
 }
