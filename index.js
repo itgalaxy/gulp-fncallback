@@ -1,7 +1,10 @@
 'use strict';
 var through = require('through2');
 var gutil = require('gulp-util');
+var PluginError = gutil.PluginError;
 var defaults = require('lodash.defaults');
+
+const PLUGIN_NAME = 'gulp-callback';
 
 module.exports = function (fn, options) {
     options = defaults(options || {}, {
@@ -10,10 +13,14 @@ module.exports = function (fn, options) {
     var once = false;
 
     return through.obj(function (file, enc, cb) {
+        var self = this;
+
         var callback = function () {
             if (options.once) {
                 once = true;
             }
+
+            self.push(file);
             cb();
         };
 
@@ -21,10 +28,12 @@ module.exports = function (fn, options) {
             if (!once) {
                 return fn(file, enc, callback);
             } else {
-                cb(null, file);
+                this.push(file);
+
+                cb();
             }
         } else {
-            return cb(new gutil.PluginError('gulp-callback', 'Callback is not function'));
+            throw new PluginError(PLUGIN_NAME, 'Callback is not function');
         }
     });
 };

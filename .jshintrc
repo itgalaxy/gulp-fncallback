@@ -155,7 +155,7 @@
 
     //"maxerr": 50,
 
-    //"moz": false,
+    "moz": true,
 
     "multistr": false,
 
