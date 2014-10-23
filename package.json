@@ -24,7 +24,8 @@
         "functions"
     ],
     "dependencies": {
-        "through2": "~0.6.3"
+        "through2": "~0.6.3",
+        "gulp-util": "~3.0.1"
     },
     "devDependencies": {
         "mocha": "*"
