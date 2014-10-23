@@ -2,6 +2,7 @@ gulp-callback
 =============
 
 Add own callback to streaming
+[![Build Status](https://travis-ci.org/itgalaxy-company/gulp-callback.svg?branch=master)](https://travis-ci.org/itgalaxy-company/gulp-callback)
 
 ## Install
 
