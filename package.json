@@ -1,0 +1,32 @@
+{
+    "name": "gulp-callback",
+    "version": "1.0.0",
+    "description": "",
+    "license": "MIT",
+    "repository": "itgalaxy-company/gulp-callback",
+    "author": {
+        "name": "Alexander Krasnoyarov",
+        "email": "sheo13666q@gmail.com",
+        "url": "http://vk.com/sterling_archer"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "files": [
+        "index.js"
+    ],
+    "keywords": [
+        "gulp",
+        "callback",
+        "functions"
+    ],
+    "dependencies": {
+        "through2": "~0.6.3"
+    },
+    "devDependencies": {
+        "mocha": "*"
+    }
+}
