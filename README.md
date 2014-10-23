@@ -1,6 +1,8 @@
 gulp-callback
 =============
 
+Add own callback to streaming
+
 ## Install
 
 ```
