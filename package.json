@@ -1,6 +1,6 @@
 {
     "name": "gulp-fncallback",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "",
     "license": "MIT",
     "repository": "itgalaxy-company/gulp-fncallback",
@@ -20,6 +20,8 @@
     ],
     "keywords": [
         "gulp",
+        "gulpplugin",
+        "gulpfriendly",
         "callback",
         "functions"
     ],
