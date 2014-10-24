@@ -1,4 +1,4 @@
-gulp-callback
+gulp-fncallback
 =============
 
 Add own callback to streaming
@@ -7,7 +7,7 @@ Add own callback to streaming
 ## Install
 
 ```
-npm install gulp-callback
+npm install gulp-fncallback
 ```
 
 ## Usage
