@@ -13,7 +13,7 @@ npm install gulp-fncallback
 ## Usage
 ```javascript
 var less = require('gulp-less');
-var callback = require('gulp-callback');
+var callback = require('gulp-fncallback');
 
 gulp.task('less', function () {
   gulp.src('./less/**/*.less')
@@ -34,7 +34,7 @@ gulp.task('less', function () {
 once - Run callback once
 ```javascript
 var less = require('gulp-less');
-var callback = require('gulp-callback');
+var callback = require('gulp-fncallback');
 
 gulp.task('less', function () {
   gulp.src('./less/**/*.less')
