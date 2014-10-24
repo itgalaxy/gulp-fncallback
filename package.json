@@ -1,13 +1,13 @@
 {
-    "name": "gulp-callback",
+    "name": "gulp-fncallback",
     "version": "1.0.0",
     "description": "",
     "license": "MIT",
-    "repository": "itgalaxy-company/gulp-callback",
+    "repository": "itgalaxy-company/gulp-fncallback",
     "author": {
         "name": "Alexander Krasnoyarov",
-        "email": "sheo13666q@gmail.com",
-        "url": "http://vk.com/sterling_archer"
+        "email": "info@itgalaxy.company",
+        "url": "http://itgalaxy.company"
     },
     "engines": {
         "node": ">=0.10.0"
