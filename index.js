@@ -19,7 +19,14 @@ module.exports = function (fn, options) {
                 once = true;
             }
 
-            self.push(file);
+            if (arguments[0] !== null) {
+                if (arguments[0]) {
+                    self.push(arguments[0]);
+                } else {
+                    self.push(file);
+                }
+            }
+
             cb();
         };
 
