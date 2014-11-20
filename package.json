@@ -31,10 +31,11 @@
         "lodash.defaults": "~2.4.1"
     },
     "devDependencies": {
-        "coveralls": "~2.7.0",
         "mocha": "*",
         "should": "*",
         "vinyl": "*",
-        "event-stream": "*"
+        "event-stream": "*",
+        "istanbul": "~0.3.2",
+        "coveralls": "~2.11.2"
     }
 }
