@@ -13,6 +13,15 @@ module.exports = function (fn, options) {
 
     return through.obj(function (file, enc, cb) {
         var self = this;
+        
+        if (file.isNull() || file.isDirectory()) {
+            this.push(file);
+            return cb();
+        }
+        
+        if (file.isStream()) {
+            return this.emit('error', new PluginError(PLUGIN_NAME, 'Streaming not supported'));
+        }
 
         var callback = function () {
             if (options.once) {
