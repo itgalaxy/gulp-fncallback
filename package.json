@@ -1,6 +1,6 @@
 {
     "name": "gulp-fncallback",
-    "version": "1.0.4",
+    "version": "2.0.0",
     "description": "",
     "license": "MIT",
     "repository": "itgalaxy-company/gulp-fncallback",
@@ -26,9 +26,10 @@
         "functions"
     ],
     "dependencies": {
+        "gulp-util": "~3.0.4",
         "through2": "~0.6.3",
         "gulp-util": "~3.0.1",
-        "lodash.defaults": "~2.4.1"
+        "lodash.defaults": "~3.4.0"
     },
     "devDependencies": {
         "mocha": "*",
