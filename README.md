@@ -2,7 +2,7 @@ gulp-fncallback
 =============
 
 Add own callback to streaming
-[![Build Status](https://travis-ci.org/itgalaxy-company/gulp-fncallback.svg?branch=master)](https://travis-ci.org/itgalaxy-company/gulp-fncallback)
+[![Build Status](https://travis-ci.org/itgalaxy/gulp-fncallback.svg?branch=master)](https://travis-ci.org/itgalaxy/gulp-fncallback)
 
 ## Install
 
