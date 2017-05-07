@@ -1,10 +1,10 @@
 gulp-fncallback
 =============
 
+[![Build Status](https://travis-ci.org/itgalaxy/gulp-fncallback.svg?branch=master)](https://travis-ci.org/itgalaxy/gulp-fncallback)
 [![Greenkeeper badge](https://badges.greenkeeper.io/itgalaxy/gulp-fncallback.svg)](https://greenkeeper.io/)
 
 Add own callback to streaming
-[![Build Status](https://travis-ci.org/itgalaxy/gulp-fncallback.svg?branch=master)](https://travis-ci.org/itgalaxy/gulp-fncallback)
 
 ## Install
 
