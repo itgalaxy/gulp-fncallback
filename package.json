@@ -32,7 +32,7 @@
     },
     "devDependencies": {
         "mocha": "*",
-        "should": "*",
+        "should": ">=13.2.1",
         "vinyl": "*",
         "event-stream": "*",
         "istanbul": "~0.4.5",
