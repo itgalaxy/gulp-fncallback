@@ -36,6 +36,6 @@
         "vinyl": "*",
         "event-stream": "*",
         "istanbul": "~0.4.5",
-        "coveralls": "~3.0.0"
+        "coveralls": "~3.0.1"
     }
 }
