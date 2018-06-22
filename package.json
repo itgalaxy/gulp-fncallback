@@ -33,7 +33,7 @@
     "devDependencies": {
         "mocha": "*",
         "should": "*",
-        "vinyl": "*",
+        "vinyl": "2.1.0",
         "event-stream": "*",
         "istanbul": "~0.4.5",
         "coveralls": "~3.0.0"
