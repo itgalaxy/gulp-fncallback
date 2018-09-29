@@ -34,7 +34,7 @@
         "mocha": "*",
         "should": "*",
         "vinyl": "*",
-        "event-stream": "*",
+        "event-stream": ">=4.0.1",
         "istanbul": "~0.4.5",
         "coveralls": "~3.0.0"
     }
