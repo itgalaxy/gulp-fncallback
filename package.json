@@ -31,7 +31,7 @@
         "lodash": "~4.17.2"
     },
     "devDependencies": {
-        "mocha": "*",
+        "mocha": ">=6.0.0",
         "should": "*",
         "vinyl": "*",
         "event-stream": "*",
